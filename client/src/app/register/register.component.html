@@ -1,0 +1,70 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+    <h2 class="text-center_text-primary"> Sign Up</h2>
+    <hr>
+    <div class="mb-3">
+        <label style="margin-right: 10px;">I am a:</label>
+
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" value="male" formControlName="gender"> Male
+        </label>
+
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" value="female" formControlName="gender"> Female
+        </label>
+    </div>
+
+    <app-text-input
+        [formControlName]="'username'"
+        label="Username"
+    ></app-text-input>
+
+    <app-text-input
+        [formControlName]="'knownAs'"
+        label="Known As"
+    ></app-text-input>
+
+    <app-date-picker
+        [formControlName]="'dateOfBirth'"
+        [maxDate]="maxDate"
+        label="Date of birth"
+    ></app-date-picker>
+
+    <app-text-input
+        [formControlName]="'city'"
+        label="City"
+    ></app-text-input>
+
+    <app-text-input
+        [formControlName]="'country'"
+        label="Country"
+    ></app-text-input>
+
+    <app-text-input
+        [formControlName]="'password'"
+        label="Password"
+    ></app-text-input>
+
+    <app-text-input
+        [formControlName]="'confirmPassword'"
+        label="Confirm Password"
+    ></app-text-input>
+
+    @if(validationErrors) {
+        <div class="alert alert-danger">
+            <ul class="text-start">
+                @for (error of validationErrors; track $index) {
+                    <li>{{error}}</li>
+                }
+            </ul>
+        </div>
+    }
+
+    <div class="form-group text-center">
+        <button [disabled]="!registerForm.valid" class="btn btn-success me-2" type="submit" >Register</button>
+        <button class="btn btn-default me-2" (click)="cancel()" type="button" >Cancel</button>
+
+    </div>
+</form>
+
+<p>Form value: {{registerForm.value | json}}</p>
+<p>Form status: {{registerForm.status | json}}</p>
