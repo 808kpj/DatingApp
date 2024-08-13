@@ -44,3 +44,5 @@ testem.log
 Thumbs.db
 API/appsettings.Development.json
 API/appsettings.json
+API/bin/Debug/net8.0/Data/UserSeedData.json
+API/bin/Debug/net8.0/
